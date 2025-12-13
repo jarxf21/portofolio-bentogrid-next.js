@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5f7ec;
+  /* primary-50 */
+  --foreground: #2a332b;
+  /* primary-950 */
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f7ec;
+  /* primary-50 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9ab89d;
+  /* primary-500 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #738575;
+  /* primary-900 */
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(154, 184, 157, 0.3);
+  /* primary-500 */
+  color: #2a332b;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid #9ab89d;
+  outline-offset: 2px;
+}
+
+/* Glassmorphism utility - Updated for Light Theme */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 213, 0.5);
+  /* primary-100 */
+}
+
+/* Gradient text utility - Updated for Sage Theme */
+.gradient-text {
+  background: linear-gradient(135deg, #738575, #9ab89d);
+  /* 900 to 500 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated gradient background - Subtle Earthy Tones */
+.animated-gradient {
+  background: linear-gradient(270deg,
+      rgba(245, 247, 236, 1),
+      rgba(226, 232, 213, 0.5),
+      rgba(154, 184, 157, 0.1));
+  background-size: 600% 600%;
+  animation: gradientShift 12s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Glow effect - Soft Green */
+.glow {
+  box-shadow: 0 0 20px rgba(154, 184, 157, 0.2);
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 30px rgba(154, 184, 157, 0.3);
+}
