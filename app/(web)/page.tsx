@@ -1,10 +1,9 @@
 import { BentoGrid } from '@/components/bento-grid'
-import { AboutSection } from '@/components/sections/about-section'
 import { CTASection } from '@/components/sections/cta-section'
 import { GitHubSection } from '@/components/sections/github-section'
 import { ProjectsSection } from '@/components/sections/projects-section'
 import { ServicesSection } from '@/components/sections/services-section'
-import { TechMarquee } from '@/components/sections/tech-marquee'
+import { TechAboutSection } from '@/components/sections/tech-about-section'
 import { client } from '@/sanity/lib/client'
 
 // Fetch profile and featured projects
@@ -33,7 +32,8 @@ async function getData() {
     "allTech": *[_type == "techStack"] | order(name asc) {
       name,
       slug,
-      icon
+      icon,
+      category
     }
   }`
   return client.fetch(query)
@@ -47,52 +47,24 @@ export default async function HomePage() {
   const githubUsername = profile?.socialLinks?.github?.split('github.com/')[1]?.replace('/', '')
 
   return (
-    <main className="relative bg-primary-100">
+    <main className="relative">
+      {/* Hero Section */}
+      <BentoGrid profile={profile} />
 
-      {/* 1. HERO SECTION (Layer Bawah - z-0) */}
-      <div className="relative z-0">
-        <BentoGrid profile={profile} />
-      </div>
+      {/* Combined Tech + About Section with Wave Separators */}
+      <TechAboutSection profile={profile} technologies={allTech} />
 
-      {/* 2. KONTEN PENUTUP (Layer Atas - z-10) */}
-      {/* Wrapper dengan background solid + rounded top + shadow */}
-      <div
-        className="relative z-10 -mt-[20vh] rounded-t-[3rem] bg-primary-100 shadow-2xl"
-      >
-        {/* Spacer agar konten tidak menempel di bibir lengkungan */}
-        <div className="pt-16 pb-10">
+      {/* Projects Section */}
+      <ProjectsSection projects={projects} />
 
-          {/* Tech Stack Marquee */}
-          <div className="mb-16">
-            <TechMarquee technologies={allTech} />
-          </div>
+      {/* Services Section */}
+      <ServicesSection />
 
-          {/* About Section */}
-          <div className="mb-16">
-            <AboutSection profile={profile} />
-          </div>
+      {/* GitHub Activity */}
+      <GitHubSection githubUsername={githubUsername} />
 
-          {/* Projects Section */}
-          <div className="mb-16">
-            <ProjectsSection projects={projects} />
-          </div>
-
-          {/* Services Section */}
-          <div className="mb-16">
-            <ServicesSection />
-          </div>
-
-          {/* GitHub Activity */}
-          <div className="mb-16">
-            <GitHubSection githubUsername={githubUsername} />
-          </div>
-
-          {/* CTA Section */}
-          <CTASection />
-
-        </div>
-      </div>
-
+      {/* CTA Section */}
+      <CTASection />
     </main>
   )
 }

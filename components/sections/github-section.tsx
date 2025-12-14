@@ -50,7 +50,7 @@ export function GitHubSection({ githubUsername }: GitHubSectionProps) {
     }, [githubUsername])
 
     return (
-        <section id="github" className="w-full py-20 bg-primary-100">
+        <section id="github" className="w-full py-12 bg-primary-100">
             <div className="max-w-4xl mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
