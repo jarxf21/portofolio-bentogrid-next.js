@@ -3,6 +3,7 @@
 import { scrollToSection } from '@/lib/utils/scroll-to-section'
 import { CodeBracketIcon, CommandLineIcon, EnvelopeIcon, HomeIcon, UserIcon } from '@heroicons/react/24/outline'
 import { AnimatePresence, motion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 const navItems = [
@@ -16,6 +17,10 @@ const navItems = [
 export function FloatingDock() {
     const [activeSection, setActiveSection] = useState('home')
     const [isVisible, setIsVisible] = useState(false)
+    const pathname = usePathname()
+
+    // Hide on projects and contacts pages
+    const isHidden = pathname?.startsWith('/projects') || pathname?.startsWith('/project') || pathname?.startsWith('/contact')
 
     useEffect(() => {
         // Track scroll position for auto-hide/show
@@ -61,6 +66,8 @@ export function FloatingDock() {
         scrollToSection(sectionId)
         setActiveSection(sectionId)
     }
+
+    if (isHidden) return null
 
     return (
         <AnimatePresence>

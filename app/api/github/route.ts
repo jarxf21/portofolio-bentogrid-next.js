@@ -30,14 +30,30 @@ export async function GET() {
         const events = await eventsResponse.json()
 
         // Transform events into a simpler format
-        const activity = events.slice(0, 5).map((event: GitHubEvent) => ({
-            id: event.id,
-            type: event.type,
-            repo: event.repo.name,
-            repoUrl: `https://github.com/${event.repo.name}`,
-            createdAt: event.created_at,
-            action: getEventAction(event),
-        }))
+        const activity = events.slice(0, 10).map((event: GitHubEvent) => {
+            let message = '';
+            // Extract message based on event type
+            if (event.type === 'PushEvent') {
+                message = event.payload?.commits?.[0]?.message || 'Pushed commits';
+            } else if (event.type === 'CreateEvent') {
+                message = `Created ${event.payload?.ref_type || 'repository'}`;
+            } else if (event.type === 'PullRequestEvent') {
+                message = `${event.payload?.action} pull request`;
+            } else if (event.type === 'WatchEvent') {
+                message = 'Starred repository';
+            } else {
+                message = event.type.replace('Event', '');
+            }
+
+            return {
+                id: event.id,
+                type: event.type,
+                repo: event.repo.name,
+                repoUrl: `https://github.com/${event.repo.name}`,
+                timestamp: event.created_at, // Keep ISO string for frontend formatting
+                message: message,
+            }
+        })
 
         return NextResponse.json({
             username: GITHUB_USERNAME,
@@ -79,7 +95,7 @@ interface GitHubEvent {
     repo: { name: string }
     created_at: string
     payload?: {
-        commits?: unknown[]
+        commits?: { message: string }[]
         ref_type?: string
         action?: string
     }

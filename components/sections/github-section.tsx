@@ -6,8 +6,10 @@ import { useEffect, useState } from 'react'
 
 interface GitHubEvent {
     repo: string
+    repoUrl: string
     message: string
     timestamp: string
+    type: string
 }
 
 interface GitHubSectionProps {
@@ -25,20 +27,24 @@ export function GitHubSection({ githubUsername }: GitHubSectionProps) {
             return
         }
 
-        // Fetch GitHub events
-        fetch(`https://api.github.com/users/${githubUsername}/events/public?per_page=5`)
+        // Fetch GitHub events from internal API
+        fetch('/api/github')
             .then((res) => {
                 if (!res.ok) throw new Error('Failed to fetch')
                 return res.json()
             })
             .then((data) => {
-                const formattedEvents: GitHubEvent[] = data
-                    .filter((event: any) => event.type === 'PushEvent')
-                    .slice(0, 3)
+                // data.activity from our API route
+                const formattedEvents: GitHubEvent[] = data.activity
+                    .slice(0, 4) // Show top 4
                     .map((event: any) => ({
-                        repo: event.repo.name,
-                        message: event.payload.commits?.[0]?.message || 'No message',
-                        timestamp: new Date(event.created_at).toLocaleDateString(),
+                        repo: event.repo,
+                        repoUrl: event.repoUrl,
+                        message: event.message,
+                        timestamp: new Date(event.timestamp).toLocaleString(undefined, {
+                            month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                        }),
+                        type: event.type
                     }))
                 setEvents(formattedEvents)
                 setLoading(false)
@@ -139,12 +145,16 @@ export function GitHubSection({ githubUsername }: GitHubSectionProps) {
                                 >
                                     <div className="flex items-start gap-3">
                                         <div className="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0 mt-2" />
-                                        <div className="flex-1">
-                                            <p className="text-primary-950 font-bold mb-1">{event.repo}</p>
-                                            <p className="text-primary-950/80 text-sm mb-1 line-clamp-1">
+                                        <div className="flex-1 min-w-0">
+                                            <div className="flex items-center justify-between gap-2">
+                                                <a href={event.repoUrl} target="_blank" rel="noopener noreferrer" className="text-primary-950 font-bold hover:underline truncate">
+                                                    {event.repo}
+                                                </a>
+                                                <span className="text-primary-950/40 text-xs whitespace-nowrap">{event.timestamp}</span>
+                                            </div>
+                                            <p className="text-primary-950/80 text-sm mb-1 line-clamp-1 break-all">
                                                 {event.message}
                                             </p>
-                                            <p className="text-primary-950/50 text-xs">{event.timestamp}</p>
                                         </div>
                                     </div>
                                 </motion.div>
