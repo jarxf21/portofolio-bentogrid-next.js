@@ -135,9 +135,9 @@ export default async function ProjectsPage() {
                     )}
                     <Link
                         href={`/projects/${project.slug.current}`}
-                        className="flex items-center gap-2 px-4 py-2 border border-primary-900 text-primary-900 rounded-lg font-bold hover:bg-primary-900 hover:text-white transition-colors text-sm"
+                        className="flex items-center gap-2 px-4 py-2 border border-primary-900 text-primary-900 rounded-lg font-bold hover:bg-green-300 hover:border-green-300 hover:text-white transition-colors text-sm"
                     >
-                        Details
+                        View Case
                     </Link>
                 </div>
             </div>

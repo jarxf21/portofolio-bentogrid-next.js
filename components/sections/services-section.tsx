@@ -22,7 +22,7 @@ const services = [
     },
 ]
 
-const containerVariants = {
+const containerVariants: any = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
@@ -33,7 +33,7 @@ const containerVariants = {
     }
 }
 
-const cardVariants = {
+const cardVariants: any = {
     hidden: { opacity: 0, y: 50, scale: 0.9 },
     visible: {
         opacity: 1,
@@ -47,7 +47,7 @@ const cardVariants = {
     }
 }
 
-const titleVariants = {
+const titleVariants: any = {
     hidden: { opacity: 0, y: -30 },
     visible: {
         opacity: 1,
@@ -117,7 +117,7 @@ export function ServicesSection() {
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
+                    viewport={{ once: false, margin: "-50px" }}
                     variants={titleVariants}
                     className="text-center mb-12"
                 >
@@ -184,7 +184,7 @@ export function ServicesSection() {
                     className="hidden md:grid md:grid-cols-3 gap-6"
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: false, margin: "-100px" }}
                     variants={containerVariants}
                 >
                     {services.map((service, index) => (

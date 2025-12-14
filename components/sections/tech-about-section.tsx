@@ -47,11 +47,11 @@ const itemVariants = {
 // Komponen text dengan hover highlight (Simpler logic since we now use DB categories)
 // We'll map hover keywords to CMS categories
 const keywordToCategory: Record<string, string[]> = {
-    'Backend': ['Backend', 'Database', 'DevOps'], // Maps "Backend" keyword to these CMS categories
-    'Frontend': ['Frontend', 'Mobile'],
-    'Full Stack': ['Backend', 'Frontend', 'Database'],
-    'Database': ['Database'],
-    'API': ['Backend'],
+    'Backend': ['backend'], // Maps "Backend" keyword to these CMS categories
+    'Frontend': ['frontend'],
+    'Full Stack': ['backend', 'frontend','database'],
+    'Database': ['database'],
+    'API': ['backend'],
 }
 
 function HighlightText({
@@ -147,7 +147,7 @@ export function TechAboutSection({ profile, technologies }: TechAboutSectionProp
                             {/* Bio with Hover Spotlight */}
                             <div className="text-center lg:text-left">
                                 <h3 className="text-2xl font-bold text-primary-950 mb-4">
-                                    Halo, saya {profile?.fullName || 'Fajar'} 👋
+                                    Halo, saya Fajar👋
                                 </h3>
                                 <p className="text-lg text-primary-800 leading-relaxed mb-6">
                                     Seorang <HighlightText keyword="Full Stack" onHover={setHighlightedCategories}>Full Stack Developer</HighlightText> yang
@@ -162,7 +162,7 @@ export function TechAboutSection({ profile, technologies }: TechAboutSectionProp
                                 {/* Location */}
                                 <div className="flex items-center justify-center lg:justify-start gap-2 text-primary-700 mb-6">
                                     <MapPinIcon className="w-5 h-5" />
-                                    <span className="font-medium">Jakarta, Indonesia</span>
+                                    <span className="font-medium">Pontianak, Indonesia</span>
                                 </div>
 
                                 {/* Download Resume Button */}
@@ -172,7 +172,7 @@ export function TechAboutSection({ profile, technologies }: TechAboutSectionProp
                                     rel="noopener noreferrer"
                                     whileHover={{ scale: 1.05, y: -2 }}
                                     whileTap={{ scale: 0.98 }}
-                                    className={`inline-flex items-center gap-2 px-6 py-3 bg-primary-950 text-white rounded-xl font-bold shadow-lg transition-colors ${!profile?.resumeURL ? 'opacity-50 pointer-events-none' : 'hover:bg-primary-800'}`}
+                                    className={`inline-flex items-center gap-2 px-6 py-3 bg-primary-950 text-primary-950  rounded-xl font-bold shadow-lg transition-colors ${!profile?.resumeURL ? 'opacity-50 pointer-events-none' : 'hover:bg-primary-800'}`}
                                 >
                                     <ArrowDownTrayIcon className="w-5 h-5" />
                                     Download Resume

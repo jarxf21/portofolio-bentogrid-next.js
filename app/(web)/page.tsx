@@ -19,7 +19,7 @@ async function getData() {
       skills,
       socialLinks
     },
-    "projects": *[_type == "project" && featured == true] | order(publishedAt desc) [0...6] {
+    "projects": *[_type == "project"] | order(publishedAt desc) [0...3] {
       _id,
       title,
       slug,

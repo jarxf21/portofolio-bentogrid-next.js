@@ -15,7 +15,7 @@ const containerVariants = {
     }
 }
 
-const scaleUp = {
+const scaleUp: any = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
         opacity: 1,
@@ -28,7 +28,7 @@ const scaleUp = {
     }
 }
 
-const slideUp = {
+const slideUp: any = {
     hidden: { opacity: 0, y: 40 },
     visible: {
         opacity: 1,

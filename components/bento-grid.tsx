@@ -4,6 +4,7 @@ import { urlForImage } from '@/sanity/lib/image'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
 
 interface BentoGridProps {
     profile?: {
@@ -77,7 +78,7 @@ export function BentoGrid({ profile }: BentoGridProps) {
                             </motion.div>
 
                             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4 text-primary-950">
-                                Hey, I'm<br />
+                                Hey, I'm Fajar<br />
                                 <span className="text-primary-950">{profile?.fullName || 'Full Stack Engineer'}</span>
                             </h1>
 
@@ -94,9 +95,9 @@ export function BentoGrid({ profile }: BentoGridProps) {
                                 </Link>
                                 <Link
                                     href="#contact"
-                                    className="px-6 py-3 bg-transparent text-primary-950 border-2 border-primary-950 rounded-xl font-bold hover:bg-primary-950 hover:text-primary-50 transition-all"
+                                    className="px-6 py-3 bg-transparent text-primary-950  border-primary-950 rounded-xl font-bold hover:bg-primary-950 hover:text-primary-50 transition-all"
                                 >
-                                    Contact
+                                    Book a Call
                                 </Link>
                             </div>
                         </div>
@@ -121,13 +122,9 @@ export function BentoGrid({ profile }: BentoGridProps) {
                             )}
                         </motion.div>
 
-                        <motion.div
-                            variants={profileCardVariants}
-                            className="aspect-square bg-primary-600 rounded-2xl p-6 shadow-lg border border-primary-500 flex flex-col justify-center items-center"
-                        >
-                            <span className="text-4xl font-extrabold text-primary-950">2+</span>
-                            <span className="text-sm text-primary-950 mt-2 font-bold text-center">Years Experience</span>
-                        </motion.div>
+                        <div className="aspect-square">
+                            <ExperienceFlipCard />
+                        </div>
                     </div>
                 </div>
 
@@ -146,12 +143,12 @@ export function BentoGrid({ profile }: BentoGridProps) {
                                 transition={{ delay: 0.6, duration: 0.5 }}
                                 className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-primary-500 backdrop-blur-sm rounded-full text-sm mb-8 shadow-sm"
                             >
-                                <span className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
+                                <span className="w-2 h-2 bg-green rounded-full animate-pulse" />
                                 <span className="text-primary-950 font-medium">Available for work</span>
                             </motion.div>
 
                             <h1 className="text-5xl lg:text-6xl font-bold leading-tight mb-4 text-primary-950">
-                                Hey, I'm<br />
+                                Hey, I'm Fajar<br />
                                 <span className="text-primary-950">{profile?.fullName || 'Full Stack Engineer'}</span>
                             </h1>
 
@@ -171,7 +168,7 @@ export function BentoGrid({ profile }: BentoGridProps) {
                                 href="#contact"
                                 className="px-8 py-3.5 bg-transparent text-primary-950 border-2 border-primary-950 rounded-xl font-bold hover:bg-primary-950 hover:text-primary-50 transition-all text-lg"
                             >
-                                Contact
+                                Book a Call
                             </Link>
                         </div>
                     </motion.div>
@@ -195,17 +192,69 @@ export function BentoGrid({ profile }: BentoGridProps) {
                             )}
                         </motion.div>
 
-                        <motion.div
-                            variants={profileCardVariants}
-                            className="bg-primary-600 rounded-3xl p-8 shadow-lg border border-primary-500 flex flex-col justify-center items-center relative overflow-hidden"
-                        >
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(158,188,138,0.2),transparent)]" />
-                            <span className="text-6xl font-extrabold text-primary-950 relative z-10">2+</span>
-                            <span className="text-lg text-primary-950 mt-3 font-bold relative z-10">Years Experience</span>
-                        </motion.div>
+                        <div>
+                            <ExperienceFlipCard />
+                        </div>
                     </div>
                 </div>
             </div>
         </motion.section>
+    )
+}
+
+function ExperienceFlipCard() {
+    const [isFlipped, setIsFlipped] = useState(false)
+
+    return (
+        <div
+            className="w-full h-full relative perspective-1000"
+            onMouseEnter={() => setIsFlipped(true)}
+            onMouseLeave={() => setIsFlipped(false)}
+        >
+            <motion.div
+                initial={false}
+                animate={{ rotateY: isFlipped ? 180 : 0 }}
+                transition={{ duration: 0.6 }}
+                className="w-full h-full absolute inset-0 [transform-style:preserve-3d]"
+            >
+                {/* Front Face */}
+                <div className="absolute inset-0 w-full h-full bg-primary-600 rounded-3xl p-8 shadow-lg border border-primary-500 flex flex-col justify-center items-center [backface-visibility:hidden]">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(158,188,138,0.2),transparent)]" />
+                    <span className="text-6xl font-extrabold text-primary-950 relative z-10">1+</span>
+                    <span className="text-lg text-primary-950 mt-3 font-bold relative z-10">Years Experience</span>
+                </div>
+
+                {/* Back Face */}
+                <div className="absolute inset-0 w-full h-full bg-primary-950 rounded-3xl p-6 shadow-xl border border-primary-500 flex flex-col justify-center [transform:rotateY(180deg)] [backface-visibility:hidden] overflow-hidden">
+                    {/* Background decoration */}
+                    <div className="absolute -right-4 -top-4 w-24 h-24 bg-primary-800 rounded-full blur-2xl opacity-50" />
+
+                    <div className="relative z-10 space-y-4">
+                        {/* Education */}
+                        <div>
+                            <div className="flex items-center gap-2 mb-1">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#9EBC8A]" />
+                                <span className="text-xs font-bold text-primary-200 uppercase tracking-wider">Education</span>
+                            </div>
+                            <h4 className="text-white font-bold text-sm">Politeknik Negeri Pontianak</h4>
+                            <p className="text-primary-300 text-xs">D3 Informatika Engineering 2022 - 2025</p>
+                        </div>
+
+                        {/* Divider */}
+                        <div className="w-full h-px bg-primary-800" />
+
+                        {/* Experience */}
+                        <div>
+                            <div className="flex items-center gap-2 mb-1">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#9EBC8A]" />
+                                <span className="text-xs font-bold text-primary-200 uppercase tracking-wider">Internship</span>
+                            </div>
+                            <h4 className="text-white font-bold text-sm">Backend Developer</h4>
+                            <p className="text-primary-300 text-xs">3 Month Airnav Indonesia Cabang Pontianak</p>
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+        </div>
     )
 }
