@@ -38,15 +38,15 @@ const components = {
     },
     block: {
         h3: ({ children }: { children?: React.ReactNode }) => (
-            <h3 className="text-xl font-bold text-white mt-8 mb-4">{children}</h3>
+            <h3 className="text-xl font-bold text-primary-950 mt-8 mb-4">{children}</h3>
         ),
         blockquote: ({ children }: { children?: React.ReactNode }) => (
-            <blockquote className="border-l-4 border-cyan-500 pl-4 my-6 italic text-gray-300">
+            <blockquote className="border-l-4 border-primary-500 pl-4 my-6 italic text-primary-900/80">
                 {children}
             </blockquote>
         ),
         normal: ({ children }: { children?: React.ReactNode }) => (
-            <p className="text-gray-300 leading-relaxed mb-4">{children}</p>
+            <p className="text-primary-950 leading-relaxed mb-4">{children}</p>
         ),
     },
     marks: {
@@ -57,14 +57,14 @@ const components = {
                     href={value?.href}
                     target={target}
                     rel={target ? 'noopener noreferrer' : undefined}
-                    className="text-cyan-400 hover:text-cyan-300 underline transition-colors"
+                    className="text-primary-600 hover:text-primary-500 underline transition-colors"
                 >
                     {children}
                 </a>
             )
         },
         code: ({ children }: { children?: React.ReactNode }) => (
-            <code className="bg-gray-800 px-1.5 py-0.5 rounded text-cyan-400 text-sm">
+            <code className="bg-primary-100 px-1.5 py-0.5 rounded text-primary-700 text-sm font-semibold">
                 {children}
             </code>
         ),

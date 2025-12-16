@@ -119,22 +119,10 @@ export default defineType({
                     description: 'What were the outcomes? Metrics, learnings, etc.',
                 }),
                 defineField({
-                    name: 'gallery',
-                    title: 'Gallery',
-                    type: 'array',
-                    of: [
-                        {
-                            type: 'image',
-                            options: { hotspot: true },
-                            fields: [
-                                {
-                                    name: 'caption',
-                                    type: 'string',
-                                    title: 'Caption',
-                                },
-                            ],
-                        },
-                    ],
+                    name: 'videoUrl',
+                    title: 'Video Demo (YouTube/Vimeo)',
+                    type: 'url',
+                    description: 'Paste a YouTube or Vimeo link here instead of a gallery.'
                 }),
             ],
         }),

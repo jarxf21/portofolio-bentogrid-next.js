@@ -36,7 +36,7 @@ async function getData() {
       category
     }
   }`
-  return client.fetch(query)
+  return client.fetch(query, {}, { next: { revalidate: 10 } })
 }
 
 export default async function HomePage() {

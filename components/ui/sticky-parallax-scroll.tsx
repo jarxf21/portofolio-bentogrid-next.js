@@ -43,7 +43,7 @@ export const StickyScroll = ({
             <div className="hidden lg:block w-full lg:w-1/2 relative">
                 <div
                     className={cn(
-                        "sticky top-20 h-96 w-full rounded-2xl overflow-hidden bg-white shadow-xl border border-primary-500/20",
+                        "sticky top-20 h-96 w-full rounded-2xl overflow-hidden bg-primary-100/50 shadow-xl border border-primary-500/20",
                         contentClassName
                     )}
                 >
@@ -61,7 +61,7 @@ export const StickyScroll = ({
                                     src={item.imageUrl}
                                     alt={item.title}
                                     fill
-                                    className="object-cover"
+                                    className="object-contain"
                                     unoptimized
                                 />
                             ) : (
@@ -126,13 +126,13 @@ function TextBlock({ item, index, setActiveCard, isActive }: {
             </motion.h2>
 
             {/* Mobile Image (Visible only on small screens) */}
-            <div className="lg:hidden w-full h-60 relative rounded-xl overflow-hidden my-4 bg-primary-100">
+            <div className="lg:hidden w-full h-60 relative rounded-xl overflow-hidden my-4 bg-primary-100/50">
                 {item.imageUrl ? (
                     <Image
                         src={item.imageUrl}
                         alt={item.title}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                         unoptimized
                     />
                 ) : (

@@ -22,7 +22,7 @@ async function getProjects() {
     repoUrl,
     "techStack": techStack[]->{ name, slug }
   }`
-    return client.fetch(query)
+    return client.fetch(query, {}, { next: { revalidate: 10 } })
 }
 
 // Types

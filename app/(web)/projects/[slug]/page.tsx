@@ -35,7 +35,7 @@ async function getProject(slug: string) {
       problem,
       solution,
       results,
-      gallery
+      videoUrl
     }
   }`
     return client.fetch(query, { slug })
@@ -54,7 +54,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             {/* Back Link */}
             <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 text-primary-900/60 hover:text-primary-950 transition-colors mb-8"
+                className="inline-flex items-center gap-2 text-primary-950 hover:text-primary-950 transition-colors mb-8"
             >
                 <ArrowLeftIcon className="w-4 h-4" />
                 Back to Projects
@@ -76,7 +76,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                             href={project.demoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-primary-900 text-white font-medium rounded-xl hover:bg-primary-950 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-primary-900 text-primary-950 font-medium rounded-xl hover:bg-primary-950 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
                         >
                             <ArrowTopRightOnSquareIcon className="w-5 h-5" />
                             Live Demo
@@ -98,13 +98,14 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
             {/* Main Image */}
             {project.mainImage && (
-                <div className="relative aspect-video rounded-3xl overflow-hidden mb-12 border border-primary-100 shadow-lg">
+                <div className="relative aspect-video rounded-3xl overflow-hidden mb-12 border border-primary-100 shadow-lg bg-primary-100/50">
                     <Image
-                        src={urlForImage(project.mainImage).width(1200).height(675).url()}
+                        src={urlForImage(project.mainImage).width(1200).url()}
                         alt={project.title}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                         priority
+                        unoptimized
                     />
                 </div>
             )}
@@ -155,7 +156,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                                 </div>
                                 <h2 className="text-2xl font-bold text-primary-950">The Problem</h2>
                             </div>
-                            <div className="prose prose-lg prose-stone max-w-none text-primary-900/80">
+                            <div className="prose prose-lg prose-stone max-w-none text-black">
                                 <PortableText value={project.caseStudy.problem} />
                             </div>
                         </section>
@@ -170,7 +171,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                                 </div>
                                 <h2 className="text-2xl font-bold text-primary-950">The Solution</h2>
                             </div>
-                            <div className="prose prose-lg prose-stone max-w-none text-primary-900/80">
+                            <div className="prose prose-lg prose-stone max-w-none text-black">
                                 <PortableText value={project.caseStudy.solution} />
                             </div>
                         </section>
@@ -185,32 +186,28 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                                 </div>
                                 <h2 className="text-2xl font-bold text-primary-950">Results & Impact</h2>
                             </div>
-                            <div className="prose prose-lg prose-stone max-w-none text-primary-900/80">
+                            <div className="prose prose-lg prose-stone max-w-none text-black">
                                 <PortableText value={project.caseStudy.results} />
                             </div>
                         </section>
                     )}
 
-                    {/* Gallery */}
-                    {project.caseStudy.gallery && project.caseStudy.gallery.length > 0 && (
+                    {/* Video Demo */}
+                    {project.caseStudy?.videoUrl && (
                         <section>
-                            <h2 className="text-2xl font-bold text-primary-950 mb-6">Gallery</h2>
-                            <div className="grid gap-6">
-                                {project.caseStudy.gallery.map((image: GalleryImage, index: number) => (
-                                    <figure key={index} className="relative aspect-video rounded-2xl overflow-hidden border border-primary-100 shadow-md">
-                                        <Image
-                                            src={urlForImage(image).width(1200).height(675).url()}
-                                            alt={image.caption || `Gallery image ${index + 1}`}
-                                            fill
-                                            className="object-cover"
-                                        />
-                                        {image.caption && (
-                                            <figcaption className="absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md p-4 text-center text-sm text-primary-900 border-t border-primary-100">
-                                                {image.caption}
-                                            </figcaption>
-                                        )}
-                                    </figure>
-                                ))}
+                            <h2 className="text-2xl font-bold text-primary-950 mb-6">Video Demo</h2>
+                            <div className="relative aspect-video rounded-2xl overflow-hidden border border-primary-100 shadow-md bg-black">
+                                <iframe
+                                    src={project.caseStudy.videoUrl
+                                        .replace('watch?v=', 'embed/')
+                                        .replace('youtube.com/shorts/', 'youtube.com/embed/')
+                                        .replace('youtu.be/', 'youtube.com/embed/')
+                                        .replace('vimeo.com/', 'player.vimeo.com/video/')}
+                                    title="Project Demo"
+                                    className="absolute inset-0 w-full h-full"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                />
                             </div>
                         </section>
                     )}
@@ -227,7 +224,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 </p>
                 <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary-900 text-white font-semibold rounded-xl hover:bg-primary-950 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary-900 text-black font-semibold rounded-xl hover:bg-primary-950 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                 >
                     Get in Touch
                 </Link>
