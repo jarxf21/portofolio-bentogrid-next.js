@@ -10,8 +10,8 @@ const dancingScript = Dancing_Script({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Portfolio | Engineering Natural Growth',
-    template: '%s | Portfolio',
+    default: 'Fajar | Fullstack Web Developer',
+    template: '%s | Fajar Portfolio',
   },
   description: 'Full Stack Engineer building scalable, user-centric web applications with a focus on natural design and technical precision.',
   keywords: ['portfolio', 'full-stack engineer', 'next.js', 'react', 'typescript', 'sage theme', 'natural design'],
