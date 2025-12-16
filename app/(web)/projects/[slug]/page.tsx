@@ -121,9 +121,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                                 href={project.repoUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-6 py-3 bg-primary-900 text-white font-bold rounded-xl hover:bg-primary-800 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                                className="inline-flex items-center gap-2 px-6 py-3 bg-[#9EBC8A] text-primary-950 font-bold rounded-xl hover:bg-[#8da87b] transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
                             >
-                                <CodeBracketIcon className="w-5 h-5" />
+                                <CodeBracketIcon className="w-5 h-5 " />
                                 GitHub Code
                             </a>
                         )}
