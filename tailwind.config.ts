@@ -8,6 +8,9 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            fontFamily: {
+                calligraphy: ['var(--font-calligraphy)'],
+            },
             colors: {
                 primary: {
                     50: '#F5F7EC',  // Background Latar

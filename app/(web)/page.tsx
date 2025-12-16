@@ -9,7 +9,7 @@ import { client } from '@/sanity/lib/client'
 // Fetch profile and featured projects
 async function getData() {
   const query = `{
-    "profile": *[_type == "profile"][0]{
+    "profile": *[_type == "profile"] | order(_updatedAt desc)[0]{
       fullName,
       headline,
       bio,
@@ -40,7 +40,13 @@ async function getData() {
 }
 
 export default async function HomePage() {
-  const data = await getData()
+  let data;
+  try {
+    data = await getData()
+  } catch (error) {
+    console.error('Sanity fetch failed:', error)
+    data = null
+  }
   const { profile, projects, allTech } = data || { profile: null, projects: [], allTech: [] }
 
   // Extract GitHub username from profile

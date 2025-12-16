@@ -111,7 +111,7 @@ export function CTASection() {
                                 href="mailto:fajar.career01@gmail.com"
                                 whileHover={{ scale: 1.05, y: -3 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-primary-950 border-2 border-primary-950 rounded-xl font-bold hover:bg-primary-950 hover:text-primary-50 transition-all text-lg"
+                                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#9EBC8A] text-primary-950 border-2 border-primary-950 rounded-xl font-bold hover:bg-primary-950 hover:text-primary-50 transition-all text-lg"
                             >
                                 Send Email
                             </motion.a>

@@ -43,55 +43,11 @@ interface ProjectType {
     repoUrl?: string
 }
 
-// Dummy data for UX testing (Shared with Home Section)
-const DUMMY_PROJECTS: ProjectType[] = [
-    {
-        _id: 'dummy-1',
-        title: 'Neon Nexus',
-        slug: { current: '#' }, // No link for dummy
-        excerpt: 'A futuristic dashboard for managing IoT devices in smart cities. Features real-time data visualization and 3D mapping.',
-        mainImage: null, // Placeholder will be used
-        techStack: [{ name: 'React', slug: { current: 'react' } }, { name: 'Three.js', slug: { current: 'three' } }, { name: 'Tailwind', slug: { current: 'tailwind' } }],
-        demoUrl: 'https://example.com',
-        repoUrl: 'https://github.com',
-    },
-    {
-        _id: 'dummy-2',
-        title: 'Aether Finance',
-        slug: { current: '#' },
-        excerpt: 'DeFi platform with AI-driven investment analysis. Complete with wallet integration and secure transaction processing.',
-        mainImage: null,
-        techStack: [{ name: 'Next.js', slug: { current: 'next' } }, { name: 'Solidity', slug: { current: 'solidity' } }, { name: 'Framer', slug: { current: 'framer' } }],
-        demoUrl: 'https://example.com',
-        repoUrl: 'https://github.com',
-    },
-    {
-        _id: 'dummy-3',
-        title: 'Cyber Social',
-        slug: { current: '#' },
-        excerpt: 'A decentralized social media protocol allowing users to own their data. Built with performance and privacy in mind.',
-        mainImage: null,
-        techStack: [{ name: 'Vue', slug: { current: 'vue' } }, { name: 'GraphQL', slug: { current: 'graphql' } }, { name: 'Rust', slug: { current: 'rust' } }],
-        demoUrl: 'https://example.com',
-        repoUrl: 'https://github.com',
-    }
-]
-
 export default async function ProjectsPage() {
     const projects = await getProjects() || []
 
-    // Merge real projects with dummy projects to ensure at least 5 items
-    const displayProjects = [...projects];
-    if (displayProjects.length < 5) {
-        const needed = 5 - displayProjects.length;
-        // Cycle through dummy projects if we need more
-        for (let i = 0; i < needed; i++) {
-            displayProjects.push({
-                ...DUMMY_PROJECTS[i % DUMMY_PROJECTS.length],
-                _id: `dummy-gen-${i}`
-            });
-        }
-    }
+    // Use only real projects
+    const displayProjects = projects;
 
     // Transform to StickyScroll format
     const stickyContent: StickyScrollItem[] = displayProjects.map((project: ProjectType) => ({

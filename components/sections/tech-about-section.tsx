@@ -49,7 +49,7 @@ const itemVariants = {
 const keywordToCategory: Record<string, string[]> = {
     'Backend': ['backend'], // Maps "Backend" keyword to these CMS categories
     'Frontend': ['frontend'],
-    'Full Stack': ['backend', 'frontend','database'],
+    'Full Stack': ['backend', 'frontend', 'database'],
     'Database': ['database'],
     'API': ['backend'],
 }
@@ -147,15 +147,15 @@ export function TechAboutSection({ profile, technologies }: TechAboutSectionProp
                             {/* Bio with Hover Spotlight */}
                             <div className="text-center lg:text-left">
                                 <h3 className="text-2xl font-bold text-primary-950 mb-4">
-                                    Halo, saya Fajar👋
+                                    Hello, I'm Fajar👋
                                 </h3>
                                 <p className="text-lg text-primary-800 leading-relaxed mb-6">
-                                    Seorang <HighlightText keyword="Full Stack" onHover={setHighlightedCategories}>Full Stack Developer</HighlightText> yang
-                                    passionate dalam membangun aplikasi web modern. Spesialis di{' '}
-                                    <HighlightText keyword="Backend" onHover={setHighlightedCategories}>Backend</HighlightText> dengan
-                                    Laravel dan sedang mendalami{' '}
-                                    <HighlightText keyword="Frontend" onHover={setHighlightedCategories}>Frontend</HighlightText> modern
-                                    dengan React & Next.js. Tertarik juga dengan{' '}
+                                    A <HighlightText keyword="Full Stack" onHover={setHighlightedCategories}>Full Stack Developer</HighlightText> passionate
+                                    about building modern web applications. Specialized in{' '}
+                                    <HighlightText keyword="Backend" onHover={setHighlightedCategories}>Backend</HighlightText> with
+                                    Laravel and currently diving into modern{' '}
+                                    <HighlightText keyword="Frontend" onHover={setHighlightedCategories}>Frontend</HighlightText> with
+                                    React & Next.js. Also interested in{' '}
                                     <HighlightText keyword="Database" onHover={setHighlightedCategories}>Database</HighlightText> design.
                                 </p>
 

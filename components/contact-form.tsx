@@ -29,7 +29,7 @@ export function ContactForm() {
 
             {/* Name Field */}
             <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-primary-950 mb-2">
                     Name
                 </label>
                 <input
@@ -37,7 +37,7 @@ export function ContactForm() {
                     id="name"
                     name="name"
                     required
-                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all text-white placeholder-gray-500"
+                    className="w-full px-4 py-3 bg-[#9EBC8A] border border-gray-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all text-white placeholder-gray-500"
                     placeholder="Your name"
                 />
                 {state.errors?.name && (
@@ -47,7 +47,7 @@ export function ContactForm() {
 
             {/* Email Field */}
             <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-primary-950 mb-2">
                     Email
                 </label>
                 <input
@@ -55,7 +55,7 @@ export function ContactForm() {
                     id="email"
                     name="email"
                     required
-                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all text-white placeholder-gray-500"
+                    className="w-full px-4 py-3 bg-[#9EBC8A] border-gray-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all text-white placeholder-gray-500"
                     placeholder="your@email.com"
                 />
                 {state.errors?.email && (
@@ -65,7 +65,7 @@ export function ContactForm() {
 
             {/* Message Field */}
             <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-primary-950 mb-2">
                     Message
                 </label>
                 <textarea
@@ -73,7 +73,7 @@ export function ContactForm() {
                     name="message"
                     rows={5}
                     required
-                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all text-white placeholder-gray-500 resize-none"
+                    className="w-full px-4 py-3 bg-[#9EBC8A]  border-gray-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all text-white placeholder-gray-500 resize-none"
                     placeholder="Your message..."
                 />
                 {state.errors?.message && (
@@ -85,7 +85,7 @@ export function ContactForm() {
             <button
                 type="submit"
                 disabled={isPending}
-                className="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg hover:from-cyan-600 hover:to-blue-600 focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-6 py-3 bg-[#9EBC8A] text-primary-950 font-semibold rounded-lg hover:from-cyan-600 hover:to-blue-600 focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
                 {isPending ? (
                     <span className="flex items-center justify-center gap-2">

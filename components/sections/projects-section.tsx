@@ -65,14 +65,14 @@ function ProjectCard({ project }: { project: Project }) {
             className="bg-primary-600 rounded-2xl overflow-hidden shadow-lg border border-primary-500 hover:shadow-2xl transition-shadow duration-300 h-full"
         >
             {/* Project Image */}
-            <Link href={`/projects/${project.slug.current}`} className="block relative h-48 overflow-hidden">
+            <Link href={`/projects/${project.slug.current}`} className="block relative aspect-video w-full overflow-hidden bg-gray-100">
                 {project.mainImage ? (
                     <Image
-                        src={urlForImage(project.mainImage).width(600).height(400).url()}
+                        src={urlForImage(project.mainImage).width(800).url()}
                         alt={project.title}
-                        width={600}
-                        height={400}
-                        className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                        fill
+                        className="object-contain w-full h-full transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         unoptimized
                     />
                 ) : (
@@ -80,7 +80,7 @@ function ProjectCard({ project }: { project: Project }) {
                         <CodeBracketIcon className="w-16 h-16 opacity-50" />
                     </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-transparent" />
             </Link>
 
             {/* Project Info */}

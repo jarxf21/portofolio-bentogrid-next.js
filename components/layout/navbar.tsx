@@ -24,8 +24,8 @@ export function Navbar() {
                         href="/"
                         className="text-xl font-bold text-primary-950 hover:opacity-80 transition-opacity flex items-center gap-2"
                     >
-                        <span className="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-900">P</span>
-                        <span>Portfolio</span>
+                        <span className="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-900">F</span>
+                        <span className="font-calligraphy text-2xl">Fajar</span>
                     </Link>
 
                     {/* Desktop Navigation */}

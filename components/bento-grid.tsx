@@ -73,7 +73,7 @@ export function BentoGrid({ profile }: BentoGridProps) {
                                 transition={{ delay: 0.5, duration: 0.4 }}
                                 className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-primary-500 backdrop-blur-sm rounded-full text-xs mb-6 shadow-sm"
                             >
-                                <span className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
+                                <span className="w-2 h-2 bg-green-700 rounded-full animate-pulse" />
                                 <span className="text-primary-950 font-medium">Available for work</span>
                             </motion.div>
 
@@ -143,7 +143,7 @@ export function BentoGrid({ profile }: BentoGridProps) {
                                 transition={{ delay: 0.6, duration: 0.5 }}
                                 className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-primary-500 backdrop-blur-sm rounded-full text-sm mb-8 shadow-sm"
                             >
-                                <span className="w-2 h-2 bg-green rounded-full animate-pulse" />
+                                <span className="w-2 h-2 bg-green-700 rounded-full animate-pulse" />
                                 <span className="text-primary-950 font-medium">Available for work</span>
                             </motion.div>
 
@@ -225,19 +225,19 @@ function ExperienceFlipCard() {
                 </div>
 
                 {/* Back Face */}
-                <div className="absolute inset-0 w-full h-full bg-primary-950 rounded-3xl p-6 shadow-xl border border-primary-500 flex flex-col justify-center [transform:rotateY(180deg)] [backface-visibility:hidden] overflow-hidden">
+                <div className="absolute inset-0 w-full h-full bg-primary-950 rounded-3xl p-3 md:p-6 shadow-xl border border-primary-500 flex flex-col justify-center [transform:rotateY(180deg)] [backface-visibility:hidden] overflow-hidden">
                     {/* Background decoration */}
                     <div className="absolute -right-4 -top-4 w-24 h-24 bg-primary-800 rounded-full blur-2xl opacity-50" />
 
-                    <div className="relative z-10 space-y-4">
+                    <div className="relative z-10 space-y-2 md:space-y-4">
                         {/* Education */}
                         <div>
                             <div className="flex items-center gap-2 mb-1">
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#9EBC8A]" />
-                                <span className="text-xs font-bold text-primary-200 uppercase tracking-wider">Education</span>
+                                <span className="text-[10px] md:text-xs font-bold text-primary-200 uppercase tracking-wider">Education</span>
                             </div>
-                            <h4 className="text-white font-bold text-sm">Politeknik Negeri Pontianak</h4>
-                            <p className="text-primary-300 text-xs">D3 Informatika Engineering 2022 - 2025</p>
+                            <h4 className="text-white font-bold text-xs md:text-sm">Politeknik Negeri Pontianak</h4>
+                            <p className="text-primary-300 text-[10px] md:text-xs leading-tight">D3 Informatika Engineering 2022 - 2025</p>
                         </div>
 
                         {/* Divider */}
@@ -247,10 +247,10 @@ function ExperienceFlipCard() {
                         <div>
                             <div className="flex items-center gap-2 mb-1">
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#9EBC8A]" />
-                                <span className="text-xs font-bold text-primary-200 uppercase tracking-wider">Internship</span>
+                                <span className="text-[10px] md:text-xs font-bold text-primary-200 uppercase tracking-wider">Internship</span>
                             </div>
-                            <h4 className="text-white font-bold text-sm">Backend Developer</h4>
-                            <p className="text-primary-300 text-xs">3 Month Airnav Indonesia Cabang Pontianak</p>
+                            <h4 className="text-white font-bold text-xs md:text-sm">Backend Developer</h4>
+                            <p className="text-primary-300 text-[10px] md:text-xs leading-tight">3 Month Airnav Indonesia Cabang Pontianak</p>
                         </div>
                     </div>
                 </div>

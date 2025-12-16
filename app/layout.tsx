@@ -1,6 +1,12 @@
 import { CommandPaletteProvider } from '@/components/command-palette'
 import type { Metadata } from 'next'
+import { Dancing_Script } from 'next/font/google'
 import './globals.css'
+
+const dancingScript = Dancing_Script({
+  subsets: ['latin'],
+  variable: '--font-calligraphy',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -9,7 +15,7 @@ export const metadata: Metadata = {
   },
   description: 'Full Stack Engineer building scalable, user-centric web applications with a focus on natural design and technical precision.',
   keywords: ['portfolio', 'full-stack engineer', 'next.js', 'react', 'typescript', 'sage theme', 'natural design'],
-  authors: [{ name: 'Your Name' }],
+  authors: [{ name: 'Fajar' }],
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -38,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-primary-50 text-primary-950 antialiased selection:bg-primary-200 selection:text-primary-900">
+      <body className={`${dancingScript.variable} bg-primary-50 text-primary-950 antialiased selection:bg-primary-200 selection:text-primary-900`}>
         <CommandPaletteProvider>
           {children}
         </CommandPaletteProvider>

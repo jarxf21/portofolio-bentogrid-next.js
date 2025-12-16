@@ -43,7 +43,12 @@ async function getProject(slug: string) {
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params
-    const project = await getProject(slug)
+    let project = null
+    try {
+        project = await getProject(slug)
+    } catch (error) {
+        console.error('Project fetch failed:', error)
+    }
 
     if (!project) {
         notFound()
@@ -71,42 +76,58 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
                 {/* Meta */}
                 <div className="flex flex-wrap gap-4 mt-6">
-                    {project.demoUrl && (
-                        <a
-                            href={project.demoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-primary-900 text-primary-950 font-medium rounded-xl hover:bg-primary-950 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
-                        >
-                            <ArrowTopRightOnSquareIcon className="w-5 h-5" />
-                            Live Demo
-                        </a>
-                    )}
-                    {project.repoUrl && (
-                        <a
-                            href={project.repoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 border border-primary-200 text-primary-900 font-medium rounded-xl hover:border-primary-300 hover:bg-primary-50 transition-all"
-                        >
-                            <CodeBracketIcon className="w-5 h-5" />
-                            Source Code
-                        </a>
-                    )}
+                    {/* Buttons moved below image */}
                 </div>
             </header>
 
             {/* Main Image */}
             {project.mainImage && (
-                <div className="relative aspect-video rounded-3xl overflow-hidden mb-12 border border-primary-100 shadow-lg bg-primary-100/50">
-                    <Image
-                        src={urlForImage(project.mainImage).width(1200).url()}
-                        alt={project.title}
-                        fill
-                        className="object-contain"
-                        priority
-                        unoptimized
-                    />
+                <div className="mb-12">
+                    <div className="relative aspect-video rounded-3xl overflow-hidden mb-6 border border-primary-100 shadow-lg bg-primary-100/50">
+                        <Image
+                            src={urlForImage(project.mainImage).width(1200).url()}
+                            alt={project.title}
+                            fill
+                            className="object-contain"
+                            priority
+                            unoptimized
+                        />
+                    </div>
+
+                    {/* Project Action Buttons */}
+                    <div className="flex flex-wrap gap-4 justify-center">
+                        {project.demoUrl ? (
+                            <a
+                                href={project.demoUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-6 py-3 bg-[#9EBC8A] text-primary-950 font-bold rounded-xl hover:bg-[#8da87b] transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                            >
+                                <ArrowTopRightOnSquareIcon className="w-5 h-5" />
+                                View Live
+                            </a>
+                        ) : (
+                            <button
+                                disabled
+                                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-200 text-gray-500 font-bold rounded-xl cursor-not-allowed"
+                            >
+                                <ArrowTopRightOnSquareIcon className="w-5 h-5" />
+                                Coming Soon
+                            </button>
+                        )}
+
+                        {project.repoUrl && (
+                            <a
+                                href={project.repoUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-6 py-3 bg-primary-900 text-white font-bold rounded-xl hover:bg-primary-800 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                            >
+                                <CodeBracketIcon className="w-5 h-5" />
+                                GitHub Code
+                            </a>
+                        )}
+                    </div>
                 </div>
             )}
 

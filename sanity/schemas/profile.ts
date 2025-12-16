@@ -54,8 +54,23 @@ export default defineType({
                     type: 'url',
                 }),
                 defineField({
-                    name: 'twitter',
-                    title: 'Twitter URL',
+                    name: 'threads',
+                    title: 'Threads URL',
+                    type: 'url',
+                }),
+                defineField({
+                    name: 'instagram',
+                    title: 'Instagram URL',
+                    type: 'url',
+                }),
+                defineField({
+                    name: 'upwork',
+                    title: 'Upwork URL',
+                    type: 'url',
+                }),
+                defineField({
+                    name: 'youtube',
+                    title: 'Youtube URL',
                     type: 'url',
                 }),
             ]

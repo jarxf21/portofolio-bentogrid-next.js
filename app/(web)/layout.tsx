@@ -10,7 +10,7 @@ export default function WebLayout({
     return (
         <div className="min-h-screen flex flex-col">
             <Navbar />
-            <main className="flex-1 pt-16">
+            <main className="flex-1 pt-5">
                 {children}
             </main>
             <FloatingDock />
