@@ -23,7 +23,7 @@ export default async function ContactPage() {
                 {/* Left Column - Info */}
                 <div>
                     <h1 className="text-4xl md:text-5xl font-bold text-primary-950 mb-4">
-                        Let&apos;s <span className="text-white">Connect</span>
+                        Let&apos;s <span className="text-[#9EBC8A]">Connect</span>
                     </h1>
                     <p className="text-xl text-primary-950/80 mb-8 leading-relaxed font-medium">
                         Have a project in mind? Want to collaborate? Or just want to say hi? I&apos;d love to hear from you.
